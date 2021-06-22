@@ -1,9 +1,10 @@
 <template>
   <div id="nav">
     <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link to="/chat">ChatBot</router-link> |
   </div>
   <router-view/>
+  <button v-if="this.$store.state.isLoggedIn" @click="logOut">Log Out</button>
 </template>
 
 <style lang="scss">
@@ -28,3 +29,14 @@
   }
 }
 </style>
+
+<script>
+export default {
+  methods: {
+    logOut(){
+      this.$store.commit('logOutUser');
+      this.$router.push('./')
+    }
+  }
+}
+</script>
